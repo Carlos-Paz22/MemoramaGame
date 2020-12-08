@@ -1,4 +1,6 @@
-# parcial
+# Integrantes
+Carlos Sebastian Paz
+Franklin Andres Molina
 
 ## Project setup
 ```
