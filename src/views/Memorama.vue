@@ -1,40 +1,47 @@
 <template>
-    <div class="pa  mx-0">
-            <!--texto superior-->
-            <div class="prueba bg-info row sinpadding mb-1 mx-0 fondo2">
-                <div class="col mx-0">
-                    <h1 class="prueba-h1 ">{{ categoria }}</h1>
-                   <p>
-              <img
-                class="pausa"
-                @click="Pausargame"
-                src="../assets/pausa1.png"
-                alt=""
-              />
+  <div class="gridprincipal mx-0">
+    <!--texto superior-->
+    <div class="gridsecundario bg-info row sinpadding mb-1 mx-0 fondo2">
+      <div class="col mx-0">
+        <h1 class="tituloencabezado">{{ categoria }}</h1>
+        <p>
+          <img
+            class="pausa"
+            @click="Pausargame"
+            src="../assets/pausa1.png"
+            alt=""
+          />
 
-              <span>Intentos: </span> {{ intentos }} <span>Puntos: </span>
-              {{ aciertos }}
-              <img class="pausa" src="../assets/reloj2.gif" alt="" />
-              {{ formatearTiempo() }}
-            </p>
-                </div>
-            </div>
+          <span>Intentos: </span> {{ intentos }} <span>Puntos: </span>
+          {{ aciertos }}
+          <img class="pausa" src="../assets/reloj2.gif" alt="" />
+          {{ formatearTiempo() }}
+        </p>
+      </div>
+    </div>
 
-            <!--cartas-->
-            <div v-for="(fila, indiceFila) in memorama" :key="indiceFila"
-                class="row mx-0 sinpadding ">
-                <div :key="indiceFila+''+indiceImagen" class="col paaa mx-0"
-                    v-for="(imagen, indiceImagen) in fila">
-                    <div class="mb-1 ">                            
-                        <img  @click="voltear(indiceFila, indiceImagen)"
-                            :class="{'girar': imagen.mostrar}"
-                            :src="(imagen.mostrar ? imagen.ruta :
-                            NOMBRE_IMAGEN_OCULTA)" class="target-image card-img-top  img-fluid">
-                    </div>
-                </div>
-            </div>
-    </div>   
-
+    <!--cartas-->
+    <div
+      v-for="(fila, indiceFila) in memorama"
+      :key="indiceFila"
+      class="row mx-0 sinpadding"
+    >
+      <div
+        :key="indiceFila + '' + indiceImagen"
+        class="col gridimage mx-0"
+        v-for="(imagen, indiceImagen) in fila"
+      >
+        <div class="mb-1">
+          <img
+            @click="voltear(indiceFila, indiceImagen)"
+            :class="{ girar: imagen.mostrar }"
+            :src="imagen.mostrar ? imagen.ruta : NOMBRE_IMAGEN_OCULTA"
+            class="target-image card-img-top img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -75,7 +82,7 @@ const // Intentos máximos que tiene el jugador
   MAXIMOS_INTENTOS = 999,
   SEGUNDOS_ESPERA_VOLTEAR_IMAGEN = 1, // Por cuántos segundos mostrar ambas imágenes
   NOMBRE_IMAGEN_OCULTA =
-     "https://assets.stickpng.com/images/5a4613eed099a2ad03f9c996.png";
+    "https://assets.stickpng.com/images/5a4613eed099a2ad03f9c996.png";
 export default {
   name: "Memorama",
   data: () => ({
@@ -108,7 +115,7 @@ export default {
   }),
   methods: {
     llenarimagenes() {
-           (this.anime = [
+      (this.anime = [
         "https://staticr1.blastingcdn.com/media/photogallery/2018/2/10/660x290/b_1200x680/itachi-uchiha-y-su-extrana-enfermedad_1830045.jpg",
         "https://www.lifeder.com/wp-content/uploads/2017/01/frases-de-Pain.jpg",
         "https://sm.ign.com/ign_latam/screenshot/default/naruto-kakashi_3e4u.jpg",
@@ -334,7 +341,7 @@ export default {
           "https://i.ytimg.com/vi/CRhSIUFFRgU/maxresdefault.jpg",
           "https://es.web.img2.acsta.net/pictures/14/04/01/10/42/226928.jpg",
           "https://pics.filmaffinity.com/Princesa_por_accidente-124935121-large.jpg",
-       "https://pics.filmaffinity.com/Los_nuevos_mutantes-737308298-large.jpg",
+          "https://pics.filmaffinity.com/Los_nuevos_mutantes-737308298-large.jpg",
           "https://diablorock.com/wp-content/uploads/2018/11/Bohemian-Rhapsody-poster.jpg",
           "https://media.gq.com.mx/photos/5ce19f41d09b9ac33d16885a/16:9/w_1920,c_limit/john%20wick%203.jpg",
           "https://studiosol-a.akamaihd.net/uploadfile/letras/playlists/9/2/9/d/929deda6025a4428b2607b5b9992b596.jpg",
@@ -412,19 +419,8 @@ export default {
         }
       }, 1000);
     },
-    // Método que muestra la alerta indicando que el jugador ha perdido; después
-    // de mostrarla, se reinicia el juego
-    indicarFracaso() {
-      Swal.fire({
-        title: "Perdiste",
-        html: `
-                <img class="img-fluid" src="./img/perdiste.png" alt="Perdiste">
-                <p class="h4">Agotaste tus intentos</p>`,
-        confirmButtonText: "Jugar de nuevo",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-      }).then(this.reiniciarJuego);
-    },
+  
+ 
     // Mostrar alerta de victoria y reiniciar juego
     Pausargame() {
       this.pararTiempo(),
@@ -451,7 +447,7 @@ export default {
               break;
 
             case "salir":
-              this.$router.replace("/categorias")+this.pararTiempo()
+              this.$router.replace("/categorias") + this.pararTiempo();
               break;
           }
         });
@@ -464,7 +460,7 @@ export default {
         title: "¡Ganaste!",
         html: `
                 <img class="img-fluid" src="https://image.freepik.com/vector-gratis/copa-ganadores-oro_1284-18399.jpg" alt="Ganaste">
-                <p class="h4">Muy bien hecho</p> Puntos:${resultado}
+                <p class="h4">Bien Jugado</p> Puntos:${resultado}
                 <br>
                 Intentos:${intentos}
                 <br>
@@ -611,42 +607,6 @@ export default {
       // Asignar a instancia de Vue para que lo dibuje
       this.memorama = memoramaDividido;
     },
-    // Método que precarga las imágenes para que las mismas ya estén cargadas
-    // cuando el usuario gire la tarjeta
-    /*  precargarImagenes() {
-      // Mostrar la alerta
-      Swal.fire({
-        title: "Cargando",
-        html: `Cargando imágenes...`,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-      }).then(this.reiniciarJuego);
-      // Ponerla en modo carga
-      Swal.showLoading();
-
-      let total = this.imagenes.length,
-        contador = 0;
-      let imagenesPrecarga = Array.from(this.imagenes);
-      // También vamos a precargar la "espalda" de la tarjeta
-      imagenesPrecarga.push(NOMBRE_IMAGEN_OCULTA);
-      // Cargamos cada imagen y en el evento load aumentamos el contador
-      imagenesPrecarga.forEach((ruta) => {
-        const imagen = document.createElement("img");
-        imagen.src = ruta;
-        imagen.addEventListener("load", () => {
-          contador++;
-          if (contador >= total) {
-            // Si el contador >= total entonces se ha terminado la carga de todas
-            this.reiniciarJuego();
-            Swal.close();
-          }
-        });
-        // Agregamos la imagen y la removemos instantáneamente, así no se muestra
-        // pero sí se carga
-        document.body.appendChild(imagen);
-        document.body.removeChild(imagen);
-      });
-    }, */
   },
   mounted() {
     if (
@@ -693,65 +653,52 @@ export default {
 };
 </script>
 <style >
-  *{
+* {
   margin: 0;
   padding: 0;
   text-decoration: none;
   box-sizing: border-box;
 }
-.sinpadding{
+.sinpadding {
   margin: 0;
   padding: 0;
 }
-.prueba{
-  border-left: solid 3px white ;
-  border-right: solid 3px white ;
-  border-bottom: solid 3px white ;
+.gridsecundario {
+  border-left: solid 3px white;
+  border-right: solid 3px white;
+  border-bottom: solid 3px white;
   text-align: center;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   height: auto;
 }
-.prueba-h1{
-  text-transform: uppercase;
+.tituloencabezado {
+  text-transform: capitalize;
   color: white;
-  font-family: 'Cooper Black';
-  font-size: 30px;
+  font-family: fantasy;
+  font-size: 35px;
+  border-block-color: initial;
 }
-.prueba-imagen-texto{
-  width: 25px;
-  height: 30px;
-  padding: 0px;
-}
-.prueba-cuadro{
-  border-radius: 5px;
-  width: 10%;
-  padding: 4px 15px;
-  background: white;
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
-  font-family: 'Cooper Black';
-}
-.col{
+
+.col {
   width: 99%;
   height: 99%;
   margin: auto;
   position: relative;
 }
-.paaa img{
-  position:absolute;
-  height:99%;
-  width:99%;
-  top:0px;
-  left:0px;
+.gridimage img {
+  position: absolute;
+  height: 99%;
+  width: 99%;
+  top: 0px;
+  left: 0px;
+  border-radius: 15px;
 }
 /* swal */
 .swal-overlay {
   background-color: rgba(0, 0, 0, 0.8);
 }
 .swal-modal {
-  background-color: rgb(0, 255, 21);
   border: 3px solid rgb(255, 255, 255);
 }
 .swal-title {
@@ -761,11 +708,8 @@ export default {
   color: #000;
   text-transform: uppercase;
 }
-.swal-icon{
-  height: 40%;
-  width: 40%;
-}
-.swal-text{
+
+.swal-text {
   color: black;
 }
 .swal-footer {
@@ -783,133 +727,65 @@ export default {
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
   color: rgb(255, 255, 255);
 }
-.swal-button--reiniciar{
-  background-color: #00ff0d,
-}
+
 .swal-button--home {
   background-color: rgba(255, 0, 0, 0.952);
 }
 /*fondos*/
 
-.pa{
+.gridprincipal {
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 100px auto;
-  background: #00ff0d;
+  grid-template-rows: 120px auto;
+  background: url("../assets/fondo1.jpg");
 }
 
 /* sin pading */
-.paaa{
+.gridimage {
   padding: 0px 2px;
 }
-/* imagen */
-.memory{
-  width: 50%;
-  margin: auto;
-  padding: 50px 0px;
-}
-.target-image{
+.target-image {
   width: 99%;
   position: relative;
-  border-radius: 10px;
+  border-radius: 9px;
   border-style: solid;
   border-width: 1px;
   border-color: black;
 }
 img.card-img-top.girar {
-    animation: fadein 2s;
+  animation: fadein 2s;
 }
 
 @keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*animacion del boton*/
-.retroceder{
-  float: left;
-  display: fixed;
-  background: red;
-  border-radius: 10px;
-  letter-spacing: 1px;
-  border-color: white;
-  border-width: 2px;
-  border-bottom: 6px solid #000;
-  margin: auto;
-  padding: 2px 3px;
-}
-.casa{
-  float: right;
-  display: fixed;
-  background: red;
-  border-radius: 10px;
-  letter-spacing: 1px;
-  border-color: white;
-  border-width: 2px;
-  border-bottom: 6px solid #000;
-  margin: auto;
-  padding: 2px 3px;
-}
-.bttn{
-  background-size: 100%;
-  display: block;
-  padding: 10px;
-  text-align: center;
-  margin: auto;
-  color: white;
-  letter-spacing: 1px;
-  border-color: white;
-  border-width: 2px;
-  border-style: solid;
-  font-family: 'Arial Black';
-  text-shadow: black -2px 2px;
-  border-bottom: 6px solid #000;
-  position: relative;
-}
-.img-btn{
+
+.img-btn {
   width: 11px;
   height: 11px;
 }
-.btton-pause{
-  float: left;
-  vertical-align: middle;
-  border-radius: 5px;
-  border-color: rgb(255, 255, 255);
-  border-width: 2px;
-  border-style: solid;
-  padding: 2px 5px;
-  background: none;
-}
-.bttn-inicio{
-  text-transform: uppercase;
-  border-radius: 20px;
-  width: 70%;
-  height: 60px;
-  font-size: 18px;
-}
-.pausa{
+
+.pausa {
   width: 40px;
 }
-.imagen{
+.imagen {
   width: 50px;
   height: 50px;
 }
-.bttn-cat{
-  border-radius: 10px;
-  width: 98%;
-  height: 70px;
-  font-size: small;
-}
+
 @keyframes animate {
-  0%{
+  0% {
     transform: translateY(0) rotate(0deg);
     opacity: 1;
   }
-  100%{
+  100% {
     transform: translateY(-1000px) rotate(360deg);
     opacity: 0;
   }

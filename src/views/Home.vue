@@ -1,5 +1,5 @@
 <template>
-<div class="padre fondox1">
+<div class="padrex1 fondox1">
   <div class="bloque">
 
 
