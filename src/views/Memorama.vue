@@ -1,12 +1,10 @@
 <template>
-  <div class="bg-info mx-0">
-    <div class="d-flex flex-row justify-content-center mx-0">
-      <div style="tam max-height:100px; border-radius: 20px ">
-        <div class="d-flex flex-row justify-content-between">
-          <div class="">
-            <h3 class="text-center">Memorama</h3>
-
-            <p>
+    <div class="pa  mx-0">
+            <!--texto superior-->
+            <div class="prueba bg-info row sinpadding mb-1 mx-0 fondo2">
+                <div class="col mx-0">
+                    <h1 class="prueba-h1 ">{{ categoria }}</h1>
+                   <p>
               <img
                 class="pausa"
                 @click="Pausargame"
@@ -19,47 +17,24 @@
               <img class="pausa" src="../assets/reloj2.gif" alt="" />
               {{ formatearTiempo() }}
             </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="grid-block col-sm-md-12"
-      style="background-image: url('https://image.freepik.com/vector-gratis/fondo-degradado-tonos-verdes_23-2148380476.jpg');no-repeat center top; width: 100%; height: 100%;   height: 100vh; background-size: cover; "
-    >
-      <!--   <div
-          class="bg-info mb-4 mt-4 p-4 col-sm-4"
-          style="tam max-height:3000px; border-radius: 20px"
-        > -->
-      
-      <div class="d-flex flex-row justify-content-center mx-my-0">
-        <div class="">
-          <div
-            v-for="(fila, indiceFila) in memorama"
-            :key="indiceFila"
-            class="row mx-0"
-          >
-            <div
-              :key="indiceFila + '' + indiceImagen"
-              class="col p-1 mx-my-0 space"
-              v-for="(imagen, indiceImagen) in fila"
-            >
-              <div class="distancia">
-                <img
-                  @click="voltear(indiceFila, indiceImagen)"
-                  :class="{ girar: imagen.mostrar }"
-                  :src="imagen.mostrar ? imagen.ruta : NOMBRE_IMAGEN_OCULTA"
-                  class="target-image6"
-                />
-              </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <!--  </div> -->
-     
-    </div>
-    </div>
-  </div>
+
+            <!--cartas-->
+            <div v-for="(fila, indiceFila) in memorama" :key="indiceFila"
+                class="row mx-0 sinpadding ">
+                <div :key="indiceFila+''+indiceImagen" class="col paaa mx-0"
+                    v-for="(imagen, indiceImagen) in fila">
+                    <div class="mb-1 ">                            
+                        <img  @click="voltear(indiceFila, indiceImagen)"
+                            :class="{'girar': imagen.mostrar}"
+                            :src="(imagen.mostrar ? imagen.ruta :
+                            NOMBRE_IMAGEN_OCULTA)" class="target-image card-img-top  img-fluid">
+                    </div>
+                </div>
+            </div>
+    </div>   
+
 </template>
 
 <script>
@@ -100,7 +75,7 @@ const // Intentos máximos que tiene el jugador
   MAXIMOS_INTENTOS = 999,
   SEGUNDOS_ESPERA_VOLTEAR_IMAGEN = 1, // Por cuántos segundos mostrar ambas imágenes
   NOMBRE_IMAGEN_OCULTA =
-    "https://assets.stickpng.com/images/5a4613eed099a2ad03f9c996.png";
+     "https://assets.stickpng.com/images/5a4613eed099a2ad03f9c996.png";
 export default {
   name: "Memorama",
   data: () => ({
@@ -133,11 +108,11 @@ export default {
   }),
   methods: {
     llenarimagenes() {
-      (this.anime = [
+           (this.anime = [
         "https://staticr1.blastingcdn.com/media/photogallery/2018/2/10/660x290/b_1200x680/itachi-uchiha-y-su-extrana-enfermedad_1830045.jpg",
         "https://www.lifeder.com/wp-content/uploads/2017/01/frases-de-Pain.jpg",
         "https://sm.ign.com/ign_latam/screenshot/default/naruto-kakashi_3e4u.jpg",
-        "https://static.wikia.nocookie.net/narutoinuyashapokemnyharrypotter/images/3/38/Haku.jpg/revision/latest/scale-to-width-down/340?cb=20130620110333&path-prefix=es",
+        "https://www.alfabetajuega.com/wp-content/uploads/2020/04/my-hero-academia-deku.jpg",
         "https://www.alfabetajuega.com/wp-content/uploads/2020/11/madara-naruto-portada.jpg",
         "https://i1.wp.com/www.bitme.gg/wp-content/uploads/2020/06/Naruto_-Los-cinco-jutsus-ma%CC%81s-poderosos-de-Sasuke-Uchiha.jpg?fit=1280%2C720&ssl=1",
         "https://cde.peru.com//ima/0/1/1/5/8/1158452/611x458/naruto-shippuden-ultimate-ninja-storm.jpg",
@@ -175,7 +150,7 @@ export default {
         (this.aviones = [
           "https://www.preferente.com/wp-content/uploads/2019/08/airbus-a220-300-2jpg-30176825650556b1.jpg",
           "https://www.ecestaticos.com/imagestatic/clipping/868/9ca/8689ca73237158da46e457a120354717/por-que-los-aviones-comerciales-no-llevan-paracaidas-para-casos-de-emergencia.jpg?mtime=1593793065",
-          "https://lapublicidad.net/wp-content/uploads/2020/07/aviones.jpg",
+          "https://cdn.hispantv.com/hispanmedia/files/images/thumbnail/20171006/06330339_xl.jpg",
           "https://services.meteored.com/img/article/por-que-vuelan-los-aviones-205391-1_768.jpg",
           "https://static.iris.net.co/dinero/upload/images/2020/11/3/305564_1.jpg",
           "https://cdn.ticbeat.com/src/uploads/2019/03/aviones.jpeg",
@@ -184,7 +159,7 @@ export default {
           "https://static2.abc.es/media/noticias/2020/03/30/aviones-sevilla-kI3C--1200x630@abc.jpg",
           "https://estaticos.muyinteresante.es/uploads/images/article/5f0822635cafe88d8a35ca72/avion_0.jpg",
           "https://i.ytimg.com/vi/Drh1mpUrNGY/maxresdefault.jpg",
-          "https://lh3.googleusercontent.com/proxy/VtmQk3lct8bYvlpglPrxE2F5Bc3h5cZQEOX5rp_HrU0UOG7CoFqciai3Vm1VMtbLpLRhVmp1E34H8Llc-epgMZps1y5xA4BHf7P4nEcpIiAu7StIMlXZqD1rqcN8ANs",
+          "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2020/09/25/16010583652225.jpg",
           "https://i.pinimg.com/originals/60/f4/e3/60f4e34a6ea2e907018ff0d502594978.jpg",
           "https://i.pinimg.com/originals/dc/d2/ca/dcd2cac6553f24135f72d42c1e2f3fee.jpg",
           "https://static2.abc.es/media/ciencia/2020/06/19/Formacin-de-Supermarine-Spitfire-k2tB--1024x512@abc.jpg",
@@ -256,7 +231,7 @@ export default {
           "https://saboryestilo.com.mx/wp-content/uploads/2019/02/frutos-rojos.jpg",
           "https://travelandleisure.mx/wp-content/uploads/2019/01/pina.jpg",
           "https://okdiario.com/img/vida-sana/2016/06/30/sandia.jpg",
-          "https://estaticos.miarevista.es/media/cache/1140x_thumb/uploads/images/gal,lery/59c0e0dd5bafe8af7b9440ca/beneficiosmoras-int.jpg",
+          "https://www.llaollaoweb.com/blog/wp-content/uploads/2016/02/Pitaya-e1456313751763.jpg",
           "https://i.blogs.es/40d04f/tangerines-1721633_1280-1-/450_1000.jpg",
           "https://www.hogarmania.com/archivos/201906/naranja-vitaminac-1280x720x80xX.jpg",
           "https://saboryestilo.com.mx/wp-content/uploads/2019/06/beneficios-del-melon-1-1200x720.jpg",
@@ -359,7 +334,7 @@ export default {
           "https://i.ytimg.com/vi/CRhSIUFFRgU/maxresdefault.jpg",
           "https://es.web.img2.acsta.net/pictures/14/04/01/10/42/226928.jpg",
           "https://pics.filmaffinity.com/Princesa_por_accidente-124935121-large.jpg",
-          "https://static.wikia.nocookie.net/disney/images/c/c5/Spirited_Away.jpg/revision/latest?cb=20130421015528&path-prefix=es",
+       "https://pics.filmaffinity.com/Los_nuevos_mutantes-737308298-large.jpg",
           "https://diablorock.com/wp-content/uploads/2018/11/Bohemian-Rhapsody-poster.jpg",
           "https://media.gq.com.mx/photos/5ce19f41d09b9ac33d16885a/16:9/w_1920,c_limit/john%20wick%203.jpg",
           "https://studiosol-a.akamaihd.net/uploadfile/letras/playlists/9/2/9/d/929deda6025a4428b2607b5b9992b596.jpg",
@@ -718,49 +693,225 @@ export default {
 };
 </script>
 <style >
-*{
+  *{
   margin: 0;
   padding: 0;
   text-decoration: none;
   box-sizing: border-box;
 }
-.distancia {
-  margin-bottom: 1px;
+.sinpadding{
+  margin: 0;
+  padding: 0;
 }
-/* .tam {
-  width: 500px;
-  background: red;
-} */
-img.card-img-top.girar {
-    animation: fadein 2s;
+.prueba{
+  border-left: solid 3px white ;
+  border-right: solid 3px white ;
+  border-bottom: solid 3px white ;
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: auto;
 }
- .target-image6{
-  /* width: 85%; */
-  height: 60px;
+.prueba-h1{
+  text-transform: uppercase;
+  color: white;
+  font-family: 'Cooper Black';
+  font-size: 30px;
+}
+.prueba-imagen-texto{
+  width: 25px;
+  height: 30px;
+  padding: 0px;
+}
+.prueba-cuadro{
+  border-radius: 5px;
+  width: 10%;
+  padding: 4px 15px;
+  background: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  font-family: 'Cooper Black';
+}
+.col{
+  width: 99%;
+  height: 99%;
+  margin: auto;
+  position: relative;
+}
+.paaa img{
+  position:absolute;
+  height:99%;
+  width:99%;
+  top:0px;
+  left:0px;
+}
+/* swal */
+.swal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.swal-modal {
+  background-color: rgb(0, 255, 21);
+  border: 3px solid rgb(255, 255, 255);
+}
+.swal-title {
+  margin: 0px;
+  font-size: 18px;
+  margin-bottom: 28px;
+  color: #000;
+  text-transform: uppercase;
+}
+.swal-icon{
+  height: 40%;
+  width: 40%;
+}
+.swal-text{
+  color: black;
+}
+.swal-footer {
+  background-color: rgb(245, 248, 250);
+  margin-top: 32px;
+  border-top: 1px solid #bac2c7;
+  overflow: hidden;
+  text-align: center;
+}
+.swal-button {
+  padding: 10px 19px;
+  border-radius: 5px;
+  font-size: 12px;
+  border: 1px solid #000000;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+  color: rgb(255, 255, 255);
+}
+.swal-button--reiniciar{
+  background-color: #00ff0d,
+}
+.swal-button--home {
+  background-color: rgba(255, 0, 0, 0.952);
+}
+/*fondos*/
+
+.pa{
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px auto;
+  background: #00ff0d;
+}
+
+/* sin pading */
+.paaa{
+  padding: 0px 2px;
+}
+/* imagen */
+.memory{
+  width: 50%;
+  margin: auto;
+  padding: 50px 0px;
+}
+.target-image{
+  width: 99%;
+  position: relative;
   border-radius: 10px;
   border-style: solid;
   border-width: 1px;
   border-color: black;
-} 
+}
+img.card-img-top.girar {
+    animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/*animacion del boton*/
+.retroceder{
+  float: left;
+  display: fixed;
+  background: red;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  border-color: white;
+  border-width: 2px;
+  border-bottom: 6px solid #000;
+  margin: auto;
+  padding: 2px 3px;
+}
+.casa{
+  float: right;
+  display: fixed;
+  background: red;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  border-color: white;
+  border-width: 2px;
+  border-bottom: 6px solid #000;
+  margin: auto;
+  padding: 2px 3px;
+}
+.bttn{
+  background-size: 100%;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  margin: auto;
+  color: white;
+  letter-spacing: 1px;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+  font-family: 'Arial Black';
+  text-shadow: black -2px 2px;
+  border-bottom: 6px solid #000;
+  position: relative;
+}
+.img-btn{
+  width: 11px;
+  height: 11px;
+}
+.btton-pause{
+  float: left;
+  vertical-align: middle;
+  border-radius: 5px;
+  border-color: rgb(255, 255, 255);
+  border-width: 2px;
+  border-style: solid;
+  padding: 2px 5px;
+  background: none;
+}
+.bttn-inicio{
+  text-transform: uppercase;
+  border-radius: 20px;
+  width: 70%;
+  height: 60px;
+  font-size: 18px;
+}
+.pausa{
+  width: 40px;
+}
 .imagen{
   width: 50px;
   height: 50px;
 }
-#ditanciadere {
-  padding: 1px;
+.bttn-cat{
+  border-radius: 10px;
+  width: 98%;
+  height: 70px;
+  font-size: small;
 }
-.tam2{
-  margin-right: 1px;
-}
-/* body{
-  overflow-y: hidden;
-} */
-.pausa{
-  width: 40px;
-}
-img {
-   width:100%;
-    max-width:400px;
-  
+@keyframes animate {
+  0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(-1000px) rotate(360deg);
+    opacity: 0;
+  }
 }
 </style>

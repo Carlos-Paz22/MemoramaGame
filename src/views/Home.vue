@@ -42,13 +42,6 @@ export default {
   background-size: cover;
 }
 
-.padre {
-  background-size: 100%;
-
-  width: 100%;
-  height: 100vh;
-  display: table;
-}
 
 .btnx1 {
   position: absolute;
@@ -145,6 +138,13 @@ export default {
   letter-spacing: 0;
   opacity: 1;
   transform: scale(1);
+}
+.padre {
+  background-size: 135%;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  display: table;
 }
 
 
